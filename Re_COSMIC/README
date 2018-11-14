@@ -1,0 +1,100 @@
+COsmic-ray Soil Moisture Interaction Code (COSMIC) - Version 1.5
+
+W. James Shuttleworth and Rafael Rosolem - January/2012
+Additional support: Marek Zreda, Trenton Franz, Xubin Zeng, and Christopher Zweck
+Fortran code developed by Rafael Rosolem
+
+Shuttleworth, J., R. Rosolem, M. Zreda, and T. Franz (2013), The COsmic-ray Soil
+              Moisture Interaction Code (COSMIC) for use in data assimilation,
+              Hydrol. Earth Syst. Sci., 17(8), 3205–3217, doi:10.5194/hess-17-3205-2013.
+
+COSMIC has been developed under the COsmic-ray Soil Moisture Observing System
+(COSMOS) project. The COSMOS project is funded by the Atmospheric Science, Hydrology,
+and Ecology Programs of the US National Science Foundation (grant ATM-0838491).
+
+Only tested with gfortran compiler version 4.6.2
+gfortran -O3 -fbounds-check -o cosmic cosmic.f90
+
+Please contact Rafael Rosolem at rafael.rosolem@bristol.ac.uk for any questions and
+support.
+
+
+
+
+File description:
+
+README                         --> This file
+Shuttleworth_2013_HESS.pdf     --> COSMIC paper available on HESS
+cosmic.f90                     --> Fortran code
+input.dat                      --> Example of input file with the 22 soil moisture
+                                   profiles analyzed in the paper
+cosmic_parlist                 --> COSMIC namelist for ARM site
+output_calibrated_original.dat --> COSMIC output file (renamed with "_original" suffix)
+COSMIC_parlist.nc              --> NetCDF file containing all COSMIC parameters for
+                                   selected COSMOS sites used in the COSMIC paper
+
+
+
+
+COSMIC namelist:
+
+calibrated --> name for output file (e.g., output_calibrated.dat)
+3000            ! Number of soil layers 
+                  --> currently, 3000 layers with 0.1 mm thickness
+22              ! Number of soil moisture profiles 
+                  --> notice how input file is written
+1.4020          ! Dry soil bulk density (g/m3) 
+                  --> obtained from COSMIC_parlist.nc
+0.0753          ! Volumetric "lattice" water content (m3/m3) 
+                  --> obtained from COSMIC_parlist.nc
+510.5173790200  ! High Energy Neutron Flux, N (-) 
+                  --> obtained from COSMIC_parlist.nc
+0.2392421548    ! Ratio of Fast Neutron Creation Factor (Soil to Water), alpha (-)
+                  --> obtained from COSMIC_parlist.nc
+161.98621864    ! High Energy Soil Attenuation Length, L1 (g/cm2)   
+                  --> constant
+129.14558985    ! High Energy Water Attenuation Length, L2 (g/cm2)  
+                  --> constant
+107.8220456200  ! Fast Neutron Soil Attenuation Length, L3 (g/cm2)  
+                  --> obtained from COSMIC_parlist.nc
+3.1627190566    ! Fast Neutron Water Attenuation Length, L4 (g/cm2) 
+                  --> constant
+
+
+
+
+Model Input File:
+
+      column1  column 2    column 3    column 4 ...
+row 1 0.1      0.0000      0.0200      0.0500
+row 2 0.2      0.0000      0.0200      0.0500
+row 3 0.3      0.0000      0.0200      0.0500
+.
+.
+.
+
+- The first column corresponds to vertical depth in centimeters
+- Columns >2 correspond to soil moisture profiles (volumetric water content in m3/m3)
+
+
+
+
+Model Output File:
+
+
+       column 1           column 2            column 3            column4
+row 1 0.9999000000E+04    0.3048794585E+04    0.2787933278E+04    0.2501888223E+04 ...    
+row 2 0.1000000000E+00    0.6827114230E-02    0.7820411941E-02    0.9305495281E-02 ...
+row 3 0.2000000000E+00    0.6733527004E-02    0.7697610388E-02    0.9132415930E-02 ...
+.
+.
+.
+
+- The first row contains the simulated neutron flux with each column corresponding to the soil 
+  moisture profile in the input data (notice a dummy value is generated in the first column,
+  first row)
+- Starting from the second row, the first column corresponds to the vertical depth in centimeters
+  while columns >2 are the weighting factors calculated by COSMIC. If these weighting factors are
+  aggregated until the last row, the sum should be 1. To calculate the effective depth, compute
+  the cumulative weighting factor and find the depth at which the value is close to 86%.
+

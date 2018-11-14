@@ -1,0 +1,15 @@
+1000              %Number of soil layers
+22            %Number of soil moisture profiles
+1.063307        %Dry soil bulk density (g/m3)
+0.07            %Volumetric "lattice" and "organic" water content (m3/m3)
+1204.3158       %High Energy Neutron Flux, Nhe counts h-1
+0.296605964     %Ratio of Fast Neutron Creation Factor (Soil to Water), alpha (-)
+161.98621864    %High Energy Soil Attenuation Length, L1 (g/cm2)
+129.14558985    %High Energy Water Attenuation Length, L2 (g/cm2)
+73.92578099     %Fast Neutron Soil Attenuation Length, L3 (g/cm2)
+3.1627190566    %Fast Neutron Water Attenuation Length, L4 (g/cm2)
+1               %a (unitless) fast-neutron creationvconstant for pure water, C
+0               %soil temprature difference
+0.3651          %fi
+0.43            %k value
+671.24468       %N

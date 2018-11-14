@@ -1,0 +1,19 @@
+//Hydroinnova CRS Probe Filename: 1605210311.638
+//****Provide the full data file, with the header information, if support is needed.
+//Logger FWVer = 1.944
+//Logger SerialNum=14120638
+//Probe BootType = 5
+//NumberOfNPMs= 2
+CRS#1: SerialNum=14110109, FWVer=2338,DeadTime=&H 1f4, RemoteLEDMode=1, NBins=&H  80, U=&H  7d
+CRS#2: SerialNum=14070829, FWVer=2338,DeadTime=&H 1f4, RemoteLEDMode=1, NBins=&H  80, U=&H  7d
+
+//Recordperiod = 15 minutes.
+//DataSelect=p4p1t1h1t7h7bn1n2e1e2s1s2
+//--Data Column Info:
+//RecordNum,Date Time(UTC),P4_mb,P1_mb,T1_C,RH1,T_CS215,RH_CS215,Vbat,N1Cts,N2Cts,N1ET_sec,N2ET_sec,N1T_C,N1RH,N2T_C,N2RH,
+1, 2016/05/21 03:11:52, 671.52,  672.0,    6.8, 59.3,   7.1, 90.8, 14.589,       11,        6,      14,      15,   6.4,  1.0,   7.2,  1.1
+2, 2016/05/21 03:25:00, 671.61,  672.0,    7.9, 60.1,   7.5, 89.0, 14.570,     1816,      991,     788,     788,   8.8,  0.9,   9.6,  1.0
+3, 2016/05/21 03:40:00, 671.74,  672.0,    8.6, 55.1,   7.7, 87.6, 14.567,     2001,     1190,     900,     900,  10.2,  1.0,  11.0,  0.9
+4, 2016/05/21 03:55:00, 671.62,  671.9,    9.1, 51.4,   8.8, 83.3, 14.539,     2012,     1219,     900,     900,  11.1,  1.0,  12.0,  0.9
+5, 2016/05/21 04:10:00, 671.58,  671.9,    9.9, 48.7,  10.5, 78.6, 14.505,     2010,     1221,     899,     900,  11.9,  1.0,  13.0,  0.9
+6, 2016/05/21 04:25:00, 671.90,  672.0,   11.7, 60.2,  12.7, 66.7, 14.449,     2041,     1180,     900,     900,  12.9,  1.0,  14.2,  0.9
